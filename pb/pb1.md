@@ -34,7 +34,7 @@
 1. gcc han.c
 2. gcc -c han han.c
 3. gcc -a han han.c
-4. gcc -o han han.c
+4. **gcc -o han han.c**
 
 ### 06. 시스템 호출과 라이브러리 함수의 차이점을 동작 과정 비교를 통해 설명하시오.
 시스템 호출은 커널의 해당 모듈을 직접 호출해 작업하고 결과를 리턴한다. <br>

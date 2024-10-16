@@ -1,6 +1,6 @@
 ###### 서준이의 시프 정리 <br> 스스로 공부하려면 직접 정리하는 것이 좋습니다.
 
-# 리눅스 파일 정리
+# 리눅스 디렉터리 정리
 
 ### 리눅스 파일 구성 요소 
 파일명 -> inode -> 데이터블록 <br>
@@ -9,7 +9,7 @@ https://pwned.tistory.com/80
 ### mode_t 
 #### 파일 타입
 - S_IFREG: 일반 파일
-- S_IFDIR: 디렉토리
+- S_IFDIR: 디렉터리
 - S_IFCHR: 문자 디바이스 파일
 - S_IFBLK: 블록 디바이스 파일
 - S_IFIFO: FIFO (pipe)
@@ -43,21 +43,21 @@ https://pwned.tistory.com/80
 
 # 디렉터리 관리 (실습 부분)
 
-|기능|함수|
-|:-:|:-|
-|디렉터리 생성 | int mkdir(const char *path, mode_t_ mode);
-|디렉터리 삭제 | int rmdir(const char *path);
-|현재 위치 확인 | char *getcwd(char *buf, size_t size);
-||char *get_current_dir_name(void);|
-|디렉터리명 변경| int rename(const char *oldpath, const char *newpath);
-|디렉터리 이동|int chdir(const char *path);
-||int fchdir(int fd);
-|디렉터리 열기|DIR *opendir(const char *name);
-|디렉터리 닫기|int closedir(DIR *drip);
-|디렉터리 내용 읽기|struct dirent *readdir(DIR *dirp);
-|디렉터리 오프셋|long telldir(DIR *drip);
-||void seekdir(DIR *dirp, long loc);
-||void rewinddir(DIR *dirp);
+|기능|함수|라이브러리
+|:-:|:-|-|
+|디렉터리 생성 | int mkdir(const char *path, mode_t_ mode); |<sys/stat.h>, <unistd.h>
+|디렉터리 삭제 | int rmdir(const char *path); | <unistd.h>
+|현재 위치 확인 | char *getcwd(char *buf, size_t size); | <unistd.h>
+||char *get_current_dir_name(void);|<unistd.h>, <stdlib.h>
+|디렉터리명 변경| int rename(const char *oldpath, const char *newpath);|<stdio.h>, _<fcntl.h>_
+|디렉터리 이동|int chdir(const char *path);|<unistd.h>
+||int fchdir(int fd);|<unistd.h>
+|디렉터리 열기|DIR *opendir(const char *name);|<sys/types.h>, <dirent.h>
+|디렉터리 닫기|int closedir(DIR *drip);|<sys/types.h>, <dirent.h>
+|디렉터리 내용 읽기|struct dirent *readdir(DIR *dirp);|<dirent.h>
+|디렉터리 오프셋|long telldir(DIR *drip);|<dirent.h>
+||void seekdir(DIR *dirp, long loc);|<dirent.h>
+||void rewinddir(DIR *dirp);|<sys/types.h>, <dirent.h>
 
 \* 함수는 기본적으로 다 외우기
 
@@ -86,7 +86,7 @@ char *cwd = get_current_dir_name();
 ## 디렉터리 이름 변경
 ```c
 int rename("dbwlstm", "sbwlstm");
-```
+``` 
 인자 순서는 (변경할 파일/디렉터리명, 새파일/디렉터리명)이다.
 성공시 0, 실패하면 -1을 반환한다.
 
