@@ -3,4 +3,8 @@
 <hr>
 
 ### Ans
-[1강 해답보러 가기](https://github.com/andsopwn/sys-2024/blob/main/pb/pb1.md)
+[1강 해답보러 가기](https://github.com/andsopwn/sys-2024/blob/main/pb/pb1.md) <br>
+[2강 해답보러 가기](https://github.com/andsopwn/sys-2024/blob/main/pb/pb2.md)
+
+### Summary
+[2장 요약](https://github.com/andsopwn/sys-2024/blob/main/pb/sm2.md)
