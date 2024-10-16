@@ -117,7 +117,7 @@ if(S_ISREG(statbuf.st_mode))
 |S_ISUID|004000|Set UID 권한
 |S_ISGID|002000|Set GID 권한
 |S_ISVTX|001000|Sticky Bit
-|S_IRUSR|000400|소유자에게 읽기 권한|
+|S_IRUSR|000400|소유자에게 읽기 권한(S_IREAD)
 |S_IWUSR|000200|소유자에게 쓰기 권한|
 |S_IXUSR|000100|소유자에게 실행 권한|
 |S_IRGRP|000040|그룹에게 읽기 권한|
@@ -130,3 +130,12 @@ if(S_ISREG(statbuf.st_mode))
 -> USR : 개인소유자 | GRP : 그룹사용자 | OTH : 기타 사용자 <br>
 8진수이므로, RWX 순서대로 3bits씩 나누면 됨 <br>
 > 000 000 000 <-> RWX(USR) | RWX(GRP) | RWX(OTH)
+
+응용. 상수를 이용해서 접근 권한 확인
+```c
+if((statbuf.st_mode & S_IREAD) != 0)    puts("User has read permission");
+if((statbuf.st_mode & (S_IREAD >> 3)) != 0)    puts("Group has read permission");
+if((statbuf.st_mode & S_IROTH) != 0)    puts("Other have a read permission");
+```
+```S_IREAD```는 ```S_IRUSR```와 같은 값을 갖는다.
+
