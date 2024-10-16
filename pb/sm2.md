@@ -6,42 +6,7 @@
 파일명 -> inode -> 데이터블록 <br>
 https://pwned.tistory.com/80
 
-### mode_t 
-#### 파일 타입
-- S_IFREG: 일반 파일
-- S_IFDIR: 디렉터리
-- S_IFCHR: 문자 디바이스 파일
-- S_IFBLK: 블록 디바이스 파일
-- S_IFIFO: FIFO (pipe)
-- S_IFLNK: 심볼릭 링크
-- S_IFSOCK: 소켓
-
--> S_IF{파일형식} 생각보다 외우기 쉬움
-
-#### 접근 권한
-- S_IRUSR (0x00400): 소유자에게 읽기 권한
-- S_IWUSR (0x00200): 소유자에게 쓰기 권한
-- S_IXUSR (0x00100): 소유자에게 실행 권한
-- S_IRGRP (0x00040): 그룹에게 읽기 권한
-- S_IWGRP (0x00020): 그룹에게 쓰기 권한
-- S_IXGRP (0x00010): 그룹에게 실행 권한
-- S_IROTH (0x00004): 기타 사용자에게 읽기 권한
-- S_IWOTH (0x00002): 기타 사용자에게 쓰기 권한
-- S_IXOTH (0x00001): 기타 사용자에게 실행 권한
-
--> USR : 개인소유자 | GRP : 그룹사용자 | OTH : 기타 사용자 <br>
-8진수이므로, RWX 순서대로 3bits씩 나누면 됨 <br>
-> 000 000 000 <-> RWX(USR) | RWX(GRP) | RWX(OTH)
-
-#### 특수 권한
-- S_ISUID : Set UID 권한
-- S_ISGID : Set GID 권한
-- S_ISVTX : Sticky Bit
--> 유저 권한 기초
-
-<br>
-
-# 디렉터리 관리 (실습 부분)
+# 디렉터리 관리
 
 |기능|함수|라이브러리
 |:-:|:-|-|
@@ -77,7 +42,7 @@ rmdir("rmdir");
 ```c
 char *cdw = getcwd(wd1, BUFSIZ);
 ```
-해당 함수는 이렇게 call을 했어도 포인터 값이 바뀌지 않고 ```NULL```로 유지될 경우 ```perror()```로 오류 메시지를 확인할 것이
+해당 함수는 이렇게 call을 했어도 포인터 값이 바뀌지 않고 ```NULL```로 유지될 경우 ```perror()```로 오류 메시지를 확인할 것
 ```c
 char *cwd = get_current_dir_name();
 ```
@@ -96,8 +61,6 @@ chdir("cat"); // 상대경로
 chdir("/usr/local/pwned/"); // 절대경로
 ```
 디렉터리 이동은 직접 쉘에 쳐서 가는 것이 아닌, 프로그램이 동작하는 내부에서만 진행되는 것이므로, 프로그램을 종료했을 때 실제로 그 위치로 가있진 않는단다. 
-
-해야할 것 : 각 함수별로 어느 헤더인지 끼워맞추기
 
 ```c
 int fd = open("asm", O_RDONLY);

@@ -2,19 +2,6 @@
 
 # 리눅스 파일 정리 
 
-### stat 함수
-파일명으로 파일 정보 탐색 목적
-```c
-#include <sys/types.h>
-#include <sys/stat.h>
-#include <unistd.h>
-
-int stat(const char *pathname, struct stat *statbuf);
-```
-pathname : 파일명 <br>
-statbuf : 검색한 파일 정보를 저장할 구조체 주소
-
-성공하면 0을 반환하고 stat 구조체에 파일 정보 저장, 오류 발생시 -1 반환
 ### stat 구조체
 ```c
 struct stat {
@@ -50,6 +37,21 @@ struct timespec {
 };
 ```
 리눅스 커널 2.6부터 나노초 수준의 정밀도 지원
+
+### stat 함수
+파일명으로 파일 정보 탐색 목적
+```c
+#include <sys/types.h>
+#include <sys/stat.h>
+#include <unistd.h>
+
+int stat(const char *pathname, struct stat *statbuf);
+```
+pathname : 파일명 <br>
+statbuf : 검색한 파일 정보를 저장할 구조체 주소
+
+성공하면 0을 반환하고 stat 구조체에 파일 정보 저장, 오류 발생시 -1 반환
+
 
 ### inode 실습
 ```c
@@ -107,4 +109,14 @@ Ctime = 1729052602
 #include <unistd.h>
 
 fstat(int fd, struct stat *statbuf);
+```
+파일 경로 대신 현재 열려있는 파일의 **파일 기술자**를 인자로 받아 정보 검색 후 statbuf로 지정한 구조체 저장 <br>
+실패할 경우 -1 반환
+
+```c
+/* 코드 생략 : fd는 이미 할당 받음 (open) */
+fstat(fd, &statbuf);
+printf("Inode = %d\n", (int)statbuf.st_ino); // Inode = 1048600
+printf("UID = %d\n", (int)statbuf.st_uid);   // UID = 1000
+close(fd);
 ```
