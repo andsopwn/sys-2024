@@ -1,4 +1,4 @@
-###### 서준이의 시프 정리 <br> 스스로 공부하려면 직접 정리하는 것이 좋습니다.
+###### 이*준의 시프 정리 <br> 스스로 공부하려면 직접 정리하는 것이 좋습니다.
 
 # 리눅스 디렉터리 정리
 
@@ -10,11 +10,11 @@ https://pwned.tistory.com/80
 
 |기능|함수|라이브러리
 |:-:|:-|-|
-|디렉터리 생성 | int mkdir(const char *path, mode_t_ mode); |<sys/stat.h>, <unistd.h>
+|디렉터리 생성 | int mkdir(const char *path, mode_t_ mode); |<sys/stat.h>, <sys/types.h> ,*<unistd.h>*
 |디렉터리 삭제 | int rmdir(const char *path); | <unistd.h>
 |현재 위치 확인 | char *getcwd(char *buf, size_t size); | <unistd.h>
-||char *get_current_dir_name(void);|<unistd.h>, <stdlib.h>
-|디렉터리명 변경| int rename(const char *oldpath, const char *newpath);|<stdio.h>, _<fcntl.h>_
+||char *get_current_dir_name(void);|<unistd.h>
+|디렉터리명 변경| int rename(const char *oldpath, const char *newpath);|<stdio.h>
 |디렉터리 이동|int chdir(const char *path);|<unistd.h>
 ||int fchdir(int fd);|<unistd.h>
 |디렉터리 열기|DIR *opendir(const char *name);|<sys/types.h>, <dirent.h>
@@ -27,7 +27,7 @@ https://pwned.tistory.com/80
 \* 함수는 기본적으로 다 외우기
 
 ## 디렉터리 생성 & 삭제
-```c
+```c    
 mkdir("test", 0755);
 ```
 성공하면 0, 실패하면 -1 반환
@@ -68,3 +68,4 @@ fchdir(fd);
 ```
 함수 앞에 f가 붙은 것들은 웬만하면 파일 디스크립터임
 성공시 0, 실패하면 -1을 반환한다.
+

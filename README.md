@@ -24,7 +24,6 @@
 
 #### 디렉터리 관리
 + [리눅스 파일 구성 요소](https://pwned.tistory.com/80)
-+ [mode_t](pb/sm2.md#mode_t) <br>
 + [디렉터리 관리](pb/sm2.md#디렉터리-관리-실습-부분)
   + [생성 및 삭제](pb/sm2.md#디렉터리-생성--삭제) <br>
   + [이름 변경](pb/sm2.md#디렉터리-이름-변경) <br>
@@ -34,18 +33,18 @@
 #### 파일 관리
 [stat 구조체](pb/sm3.md#stat-구조체) <br>
 + 파일 정보 검색
-  + [stat()](pb/sm3#int-statconst-char-pathname-struct-stat-statbuf) <br>
-  + [fstat()](pb/sm3#fstatint-fd-struct-stat-statbuf) <br>
+  + [stat()](pb/sm3.md#int-statconst-char-pathname-struct-stat-statbuf) <br>
+  + [fstat()](pb/sm3.md#fstatint-fd-struct-stat-statbuf) <br>
 + 파일 접근 권한
   + [access()](pb/sm3.md#int-accessconst-char-pathname-int-mode)
   + [chmod()](pb/sm3.md#int-chmodconst-char-pathname-mode_t-mode)
   + [fchmod()](pb/sm3.md#int-fchmodint-fd-mode_t-mode)
 + 링크 파일 함수
-  + [link](pb/sm3.md#link)
-  + [symlink](pb/sm3.md#symlink)
-  + [lstat](pb/sm3.md#lstat)
-  + [readlink](pb/sm3.md#readlink)
-  + [realpath](pb/sm3.md#realpath)
-  + [unlink](pb/sm3.md#unlink)
+  + [link()](pb/sm3.md#link)
+  + [symlink()](pb/sm3.md#symlink)
+  + [lstat()](pb/sm3.md#lstat)
+  + [readlink()](pb/sm3.md#readlink)
+  + [realpath()](pb/sm3.md#realpath)
+  + [unlink()](pb/sm3.md#unlink)
 
 ### 파일 입출력
