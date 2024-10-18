@@ -2,11 +2,24 @@
 
 #include <stdio.h>
 #include <unistd.h>
-//#include <sys/stat.h>
+#include <stdlib.h>
 
 int main() {
-    char    buf[BUFSIZ];
-    char    *cwd = getcwd(buf, BUFSIZ);
+    char    saved_dir[BUFSIZ];
+    char    *dir;
 
-    printf("%s\n", cwd);
+    // 오류처리 안 함
+    printf("현재 디렉터리 위치 : %s\n", dir = getcwd(saved_dir, BUFSIZ));
+    // 스택에 있는 saved_dir를 사용하므로 free하지 않음
+
+    chdir("../");
+
+    printf("현재 디렉터리 위치 : %s\n", dir = getcwd(NULL, BUFSIZ));
+    free(dir);
+
+    chdir(saved_dir);
+
+    printf("현재 디렉터리 위치 : %s\n", dir = getcwd(NULL, BUFSIZ));
+    free(dir);
+    
 }
