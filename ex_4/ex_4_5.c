@@ -5,7 +5,7 @@
 
 int main() {
     int rfd, wfd, n;
-    char buf[10];
+    char buf[BUFSIZ];
 
     rfd = open("linux.txt", O_RDONLY);
 
@@ -20,7 +20,9 @@ int main() {
         exit(1);
     }
     while((n = read(rfd, buf, 6)) > 0) {
-        if(write(wfd, buf, n) != n) perror("Write");
+        if(write(wfd, buf, 6) != n) perror("Write");
+        for(int i = 0 ; i < 10 ; i++) printf("%02x ", buf[i]);
+        printf("\t buf : %s\n", buf);
     }
     if(n == -1) perror("Read");
     close(rfd);

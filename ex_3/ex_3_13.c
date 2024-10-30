@@ -6,7 +6,7 @@ int main() {
     struct stat statbuf;
 
     stat("linux.ln", &statbuf);
-    printf("1.linux.ln : Link Count = %d\n", (int)statbuf.st_nlink); // 가
+    printf("1.linux.ln : Link Count = %d\n", (int)statbuf.st_nlink);
 
     unlink("linux.ln");
 
