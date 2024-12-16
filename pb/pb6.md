@@ -4,7 +4,7 @@
 
 ### 1. 프로세스 그룹의 PID를 읽거나 설정하는 함수가 아닌 것은?
 1. getpgrp()
-1. getpdid()
+1. **getpdid()**
 1. getppid()
 1. getpgid()
 
@@ -15,9 +15,10 @@ UID     PID     PPID    C   STIME   TTY         TIME    CMD
 jw      2785    2274    0   14:45   pts/0   00:00:00    bash
 jw      46875   2785    0   20:20   pts/0   00:00:00    a.out
 ```
+PPID는 2785이며 bash이다.
 
 ### 3. times() 함수는 시간을 측정해 클록 틱 값으로 돌려준다. 현재 시스템의 클록 틱 값이 얼마인지 알 수 있는 것은?
-1. sysconf(_SC_CLK_TCK)
+1. **sysconf(_SC_CLK_TCK)**
 1. times(_SC_CLK_TCK)
 1. time(_SC_CLK_TCK)
 1. sysinfo(_SC_CLK_TCK)
@@ -26,15 +27,16 @@ jw      46875   2785    0   20:20   pts/0   00:00:00    a.out
 1. char **environ
 1. char *environ
 1. extern char *environ
-1. extern char **environ
+1. **extern char \*\*enviro**
 
 ### 5. C 언어의 main() 함수는 인자로 환경 변수를 받을 수 있다. 올바르게 선언한 것은?
 1. main(char **envp)
 1. main(int argc, char **envp)
-1. main(int argc, char **argv, char **envp)
+1. **main(int argc, char \*\*argv, char \*\*envp)**
 1. main(char **argv, char **envp)
 
 ### 6. sysinfo() 함수를 사용해 시스템을 부팅하고 경과된 시간을 시간, 분 단위로 출력하는 프로그램
+
 
 ### 7. sysinfo() 함수를 사용해 시스템의 메모리와 스왑 영역의 상태를 출력하는 프로그램 작성
 

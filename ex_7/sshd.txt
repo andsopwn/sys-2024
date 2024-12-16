@@ -1,0 +1,2 @@
+louxsoen 42774 42773  0 14:53 pts/5    00:00:00 sh -c ps -ef | grep sshd > sshd.txt
+louxsoen 42776 42774  0 14:53 pts/5    00:00:00 grep sshd
